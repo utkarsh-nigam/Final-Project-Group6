@@ -21,14 +21,25 @@ correct=np.zeros(26,int)
 attempt_dict=dict(zip(folders,attempts))
 correct_dict=dict(zip(folders,correct))
 
+missclassify_dict=dict()
 
 for i in range(0,len(y_pred)):
     print("Actual: ",test["Label"].iloc[i]," Predicted: ", folders[y_pred[i]])
     attempt_dict[test["Label"].iloc[i]]+=1
     if(test["Label"].iloc[i]==folders[y_pred[i]]):
         correct_dict[test["Label"].iloc[i]] += 1
+    else:
+        if test["Label"].iloc[i] in missclassify_dict.keys():
+            missclassify_dict[test["Label"].iloc[i]].append(folders[y_pred[i]])
+
+        else:
+            missclassify_dict[test["Label"].iloc[i]]=[folders[y_pred[i]]]
+
 
 for key in attempt_dict:
     if (attempt_dict[key]>0):
-        print("\nCharacter: ", key, "\tAttempts: ",attempt_dict[key], "\tCorrect: ",correct_dict[key], "\tAccuracy: ", round((correct_dict[key]/attempt_dict[key])*100,2))
-
+        print("\nCharacter: ", key, "\tAttempts: ",attempt_dict[key], "\tCorrect: ",correct_dict[key], "\tAccuracy: ", round((correct_dict[key]/attempt_dict[key])*100,1),end="\t")
+        if key in missclassify_dict.keys():
+            print("\tMissclassified with: ", missclassify_dict[key])
+        else:
+            print("Missclassified with: ", "None")
