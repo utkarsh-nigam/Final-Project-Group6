@@ -11,7 +11,7 @@ import pickle
 import warnings
 warnings.filterwarnings('ignore')
 
-data = pd.read_csv("A_Z Handwritten Data.csv")
+data = pd.read_csv("final_data_a_z.csv")
 data.rename(columns={'0':'label'}, inplace=True)
 
 print(data.head())
