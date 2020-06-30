@@ -15,8 +15,7 @@ from sklearn import metrics
 import warnings
 warnings.filterwarnings('ignore')
 
-data = pd.read_csv("A_Z Handwritten Data.csv").astype('float32')
-data.rename(columns={'0':'label'}, inplace=True)
+data = pd.read_csv("final_data_a_z.csv")
 print(data.head())
 print('\n\n')
 print(data.info())
@@ -66,6 +65,3 @@ print("Accuracy : ", accuracy_score(y_train,y_test) * 100)
 print("\n")
 
 print("ROC_AUC : ", roc_auc_score(y_train,y_test[:,1]) * 100)
-
-
-
