@@ -17,7 +17,7 @@ from sklearn.preprocessing import StandardScaler
 
 warnings.filterwarnings('ignore')
 
-data = pd.read_csv("A_Z Handwritten Data.csv")
+data = pd.read_csv("final_data_a_z.csv")
 data.rename(columns={'0':'label'}, inplace=True)
 
 print(data.head())
@@ -65,7 +65,7 @@ print('F1_score: %.2f' % f1_score(y_test, y_pred,pos_label= 1 , average='micro')
 from sklearn.metrics import classification_report
 print(classification_report(y_test, y_pred))
 
-test = pd.read_csv("predict_compiled.csv")
+test = pd.read_csv("predict.csv")
 test.dropna(subset=["Label"],inplace = True)
 test1 = test.drop(columns=["Label"])
 
