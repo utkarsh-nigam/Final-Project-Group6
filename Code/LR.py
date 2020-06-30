@@ -51,17 +51,8 @@ print('\n')
 print(classification_report(y_test, y_pred))
 print('\n')
 
-test = pd.read_csv("predict_compiled.csv")
+test = pd.read_csv("predict.csv")
 test.dropna(subset=["Label"],inplace = True)
-test1 = test.drop(columns=["Label"])
-
-filename = 'LR_all_A-Z.sav'
-pickle.dump(logisticRegr, open(filename, 'wb'))
-loaded_model = pickle.load(open(filename, 'rb'))
-
-
-#-----------------------------------------------------------------------------
-test = pd.read_csv("predict_compiled.csv")
 test1=test.drop(columns=["Label"])
 y_pred = logisticRegr.predict(test1)
 folders=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
