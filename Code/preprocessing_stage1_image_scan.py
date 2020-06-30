@@ -24,6 +24,7 @@ for fileName in my_files:
                 for image in images_list:
                     try:
                         image_in = Image.open(fileName + '/'+file_in+'/'+image).convert('L')#.convert('1')
+                        image_in = image_in.resize((56, 56), Image.ANTIALIAS)
                         data = np.asarray(image_in)
                         data = data.ravel()
                         data = np.array([data.ravel()])
