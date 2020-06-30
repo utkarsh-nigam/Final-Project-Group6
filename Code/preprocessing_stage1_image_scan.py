@@ -4,11 +4,6 @@ import pandas as pd
 import numpy as np
 import os
 
-os.chdir("/Users/utkarshvirendranigam/Desktop/Final-Project-Group6/Code")
-my_path=os.getcwd()
-
-
-
 my_files=os.listdir('by_class/')
 ignore_files=[".DS_Store","error_data.csv","image_data.csv"]
 
@@ -24,7 +19,6 @@ for fileName in my_files:
         files_inside=os.listdir(fileName+'/')
         print(fileName)
         for file_in in files_inside:
-            print (file_in)
             if "train" in file_in:
                 images_list = os.listdir(fileName + '/'+file_in+'/')
                 for image in images_list:
@@ -48,38 +42,5 @@ for fileName in my_files:
                             e_flag=1
                         else:
                             error_frame = error_frame.append(temp_df)
-            #print(data_frame)
-            data_frame.to_csv("image_data.csv")
+            data_frame.to_csv("all_data_scanned.csv")
             error_frame.to_csv("error_data.csv")
-
-
-
-
-
-
-
-'''
-# Open the image form working directory
-image = Image.open('Test.png')
-# summarize some details about the image
-data = np.asarray(image)
-print(type(data))
-# summarize shape
-print(data.shape)
-#print(data)
-image = image.resize((28,28),Image.ANTIALIAS)
-image.save("image_scaled.png",quality=95)
-
-
-data = np.asarray(image)
-print(type(data))
-# summarize shape
-print(data.shape)
-print(data.ravel())
-print(np.unique(data.ravel()))
-
-# show the ima
-plt.imshow(image,cmap='gray')
-plt.title("Image with color map set to gray")
-plt.show()
-'''
