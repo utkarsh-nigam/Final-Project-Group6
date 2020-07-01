@@ -23,7 +23,7 @@ clf = MLPClassifier(hidden_layer_sizes=(100,100,100),activation="logistic", max_
 
 clf.fit(x, y)
 
-filename = 'MLP_Adam_100_AllData_sigmoid_earlystop2.sav'
+filename = 'MLP_Adam_100_AllData_sigmoid_earlystop.sav'
 pickle.dump(clf, open(filename, 'wb'))
 
 test = pd.read_csv("predict.csv")
